@@ -68,8 +68,12 @@ const Peliculas = () => {
     };
 
     return (
-        <div className="min-h-screen bg-neutral-950 py-12 px-4 md:px-6 lg:px-8">
-            <div className="max-w-7xl mx-auto">
+        <div
+            className="min-h-screen bg-neutral-950 bg-cover bg-center bg-no-repeat py-12 px-4 md:px-6 lg:px-8 relative"
+            style={{ backgroundImage: "url('/img/moviesbackground.png')" }}
+        >
+            <div className="absolute inset-0 bg-black/70 -z-10"></div>
+            <div className="relative z-10 max-w-7xl mx-auto">
                 <h1 className="text-4xl md:text-5xl font-bold text-center text-red-600 mb-2 tracking-wider uppercase drop-shadow-lg">
                     Sección de películas
                 </h1>
