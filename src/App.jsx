@@ -22,6 +22,7 @@ function App () {
           <Route path="/movies" element={<Peliculas />} />
           <Route path="/movies/:id" element={<MovieDetail />} />
           <Route path="/form" element={<Formulario />} />
+          <Route path="/add-movie" element={<Formulario />} />
           <Route path="/aboutus" element={<Nosotros />} />
           <Route path="/contact" element={<Contacto />} />    
         
