@@ -69,7 +69,7 @@ const FormPeliculas = () => {
         setEditId(null);
       } else {
         const respuesta = await axios.post(BASE_URL, payload);
-        setPeliculas([...peliculas, respuesta.data]);
+        setPeliculas((prev) => [respuesta.data, ...prev]);
       }
       setFormData(initialFormData);
     } catch (error) {
@@ -116,7 +116,7 @@ const FormPeliculas = () => {
         </h1>
 
         <div className="max-w-2xl mx-auto">
-          <form className="bg-black/80 backdrop-blur-md border border-white/10 rounded-lg p-8 mb-8 shadow-2xl font-omen-body" onSubmit={handleSubmit}>
+          <form className="bg-black/40 backdrop-blur-md border border-white/10 rounded-xl p-8 mb-8 shadow-2xl shadow-black/30 ring-1 ring-white/5 font-omen-body" onSubmit={handleSubmit}>
             <div className="space-y-4">
               <div>
                 <input
@@ -125,7 +125,7 @@ const FormPeliculas = () => {
                   value={formData.titulo}
                   onChange={handleChange}
                   placeholder="Título"
-                  className="w-full px-4 py-3 bg-gray-800/50 border border-gray-600 rounded text-white placeholder-gray-500 focus:outline-none focus:border-red-700 transition"
+                  className="w-full px-4 py-3 bg-black/30 border border-white/10 rounded text-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-red-700/70 focus:border-red-700/70 transition"
                 />
               </div>
 
@@ -136,7 +136,7 @@ const FormPeliculas = () => {
                   value={formData.anio}
                   onChange={handleChange}
                   placeholder="Año"
-                  className="w-full px-4 py-3 bg-gray-800/50 border border-gray-600 rounded text-white placeholder-gray-500 focus:outline-none focus:border-red-700 transition"
+                  className="w-full px-4 py-3 bg-black/30 border border-white/10 rounded text-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-red-700/70 focus:border-red-700/70 transition"
                   min="1900"
                   max={new Date().getFullYear()}
                 />
@@ -149,7 +149,7 @@ const FormPeliculas = () => {
                   value={formData.rating}
                   onChange={handleChange}
                   placeholder="Rating (0-10)"
-                  className="w-full px-4 py-3 bg-gray-800/50 border border-gray-600 rounded text-white placeholder-gray-500 focus:outline-none focus:border-red-700 transition"
+                  className="w-full px-4 py-3 bg-black/30 border border-white/10 rounded text-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-red-700/70 focus:border-red-700/70 transition"
                   min="0"
                   max="10"
                   step="0.1"
@@ -163,7 +163,7 @@ const FormPeliculas = () => {
                   value={formData.poster}
                   onChange={handleChange}
                   placeholder="URL del poster"
-                  className="w-full px-4 py-3 bg-gray-800/50 border border-gray-600 rounded text-white placeholder-gray-500 focus:outline-none focus:border-red-700 transition"
+                  className="w-full px-4 py-3 bg-black/30 border border-white/10 rounded text-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-red-700/70 focus:border-red-700/70 transition"
                 />
               </div>
 
@@ -173,7 +173,7 @@ const FormPeliculas = () => {
                   value={formData.sinopsis}
                   onChange={handleChange}
                   placeholder="Sinopsis"
-                  className="w-full px-4 py-3 bg-gray-800/50 border border-gray-600 rounded text-white placeholder-gray-500 focus:outline-none focus:border-red-700 transition"
+                  className="w-full px-4 py-3 bg-black/30 border border-white/10 rounded text-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-red-700/70 focus:border-red-700/70 transition"
                   rows="4"
                 />
               </div>
