@@ -50,17 +50,17 @@ const Home = () => {
                             </p>
 
                             <div className="mt-10">
-                                <Link
-                                    to="/movies"
-                                    className="inline-flex items-center justify-center px-6 py-3 rounded-md font-omen-body font-medium text-[#f2f2f2] bg-[#b30000] border border-[#ff1a1a]/40 transition hover:bg-[#ff1a1a] hover:shadow-[0_0_18px_rgba(255,26,26,0.45)] focus:outline-none focus-visible:ring-2 focus-visible:ring-[#ff1a1a] focus-visible:ring-offset-2 focus-visible:ring-offset-[#050505]"
-                                >
-                                    Iniciar el Ritual
-                                </Link>
+    <Link
+        to="/movies"
+        className="inline-flex items-center justify-center px-8 py-3 border border-red-900/50 bg-red-950/20 hover:bg-red-700 hover:text-white hover:shadow-[0_0_15px_rgba(185,28,28,0.8)] text-red-700 font-bold font-omen-body uppercase tracking-[0.2em] rounded-sm transition-all duration-300 focus:outline-none focus-visible:ring-2 focus-visible:ring-red-700"
+    >
+        Iniciar el Ritual
+    </Link>
 
-                                <p className="font-omen-body mt-3 text-sm text-[#b5b5b5]/90">
-                                    Proyección sujeta a restricciones no documentadas
-                                </p>
-                            </div>
+    <p className="font-omen-body mt-3 text-sm text-[#b5b5b5]/90">
+        Proyección sujeta a restricciones no documentadas
+    </p>
+</div>
                         </div>
 
                         <div className="hidden md:flex justify-end">
