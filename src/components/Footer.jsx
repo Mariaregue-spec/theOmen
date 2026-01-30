@@ -82,12 +82,12 @@ export default function Footer() {
                             </li>
                             <li>
                                 <Link
-                                    to="/location"
+                                    to="/contact"
                                     className="text-[#b5b5b5] transition hover:text-[#ff1a1a]
                                     focus:outline-none focus-visible:ring-2 focus-visible:ring-[#ff1a1a]
                                     focus-visible:ring-offset-2 focus-visible:ring-offset-[#050505]"
                                 >
-                                    Ubicación
+                                    Contacto
                                 </Link>
                             </li>
                         </ul>
