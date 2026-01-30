@@ -32,8 +32,6 @@ const equipo = [
 const AboutUs = () => {
   return (
     <section className="relative min-h-screen text-white overflow-hidden flex flex-col">
-      
-      {/* 📹 FONDO DE VIDEO */}
       <div className="absolute inset-0 z-0">
         <video
           className="w-full h-full object-cover"
@@ -47,15 +45,11 @@ const AboutUs = () => {
         <div className="absolute inset-0 bg-black/75"></div>
       </div>
 
-      {/* CONTENEDOR PRINCIPAL */}
       <div className="relative z-10 max-w-6xl mx-auto px-4 py-16 w-full flex flex-col min-h-screen">
-        
-        {/* TÍTULO: Se mantiene arriba con su margen original */}
-        <h2 className="text-5xl md:text-7xl font-bold text-center mb-20 font-omen-title uppercase text-red-700 drop-shadow-[0_0_20px_rgba(185,28,28,0.8)] tracking-tighter">
+        <h2 className="text-4xl md:text-5xl font-bold text-center mb-20 font-omen-title uppercase text-red-700 drop-shadow-[0_2px_10px_rgba(185,28,28,0.5)] tracking-widest">
           El Clan de La Sierra
         </h2>
 
-        {/* CONTENEDOR DE EQUIPO: Este es el que se centra verticalmente en el espacio restante */}
         <div className="flex-grow flex items-center">
           <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-12 w-full">
             {equipo.map((miembro, index) => (
@@ -63,19 +57,16 @@ const AboutUs = () => {
                 key={index}
                 className="group flex flex-col items-center text-center transition-all duration-500"
               >
-                {/* 🖼️ IMAGEN SIN MARCOS */}
                 <img
                   src={miembro.foto}
                   alt={miembro.rol}
                   className="w-48 h-64 md:w-56 md:h-80 object-cover mb-6 transition-all duration-700 grayscale group-hover:grayscale-0 group-hover:scale-110 group-hover:drop-shadow-[0_0_30px_rgba(185,28,28,0.4)]"
                 />
 
-                {/* ROL */}
                 <p className="text-amber-600 font-omen-body text-xs font-black uppercase tracking-[0.2em] mb-2">
                   {miembro.rol}
                 </p>
 
-                {/* ALIAS */}
                 <p className="text-gray-400 font-omen-body text-xs italic leading-tight max-w-[180px]">
                   {miembro.alias}
                 </p>
