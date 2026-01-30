@@ -1,135 +1,91 @@
-import React, { useState, useEffect } from "react";
+import React from "react";
 import "../index.css";
-
-// Imágenes del carrusel
-import posterHereditary from "../assets/home/poster-hereditary.jpg";
-import posterMidsommar from "../assets/home/poster-midsommar.webp";
-import posterSaintMaud from "../assets/home/poster-saint-maud.jpg";
-import posterTheConjuring from "../assets/home/poster-the-conjuring.jpg";
-import posterTheWitch from "../assets/home/poster-the-witch.webp";
 
 import fotoXabier from "../assets/home/Xabier.png";
 import fotoAlba from "../assets/home/Alba.png";
 import fotoMaria from "../assets/home/Maria.png"; 
 import fotoAdrian from "../assets/home/Adrian.png";
 
-const imagenesCarrusel = [
-  posterHereditary,
-  posterMidsommar,
-  posterSaintMaud,
-  posterTheConjuring,
-  posterTheWitch,
-];
 const equipo = [
-  { nombre: "Xabier Piñeiro ", rol: "Product Owner", foto: fotoXabier },
-  { nombre: "Alba Ganduxé ", rol: "Developer", foto: fotoAlba },
-  { nombre: "Maria Regueiro ", rol: "Developer", foto: fotoMaria },
-  { nombre: "Adrian Baeza ", rol: "Scrum Master", foto: fotoAdrian },
+  { 
+    rol: "Product Owner", 
+    alias: "El Patriarca: Administrador de la matanza.",
+    foto: fotoXabier 
+  },
+  { 
+    rol: "Developer", 
+    alias: "Suturadora: Cosiendo código y piel con precisión quirúrgica.",
+    foto: fotoAlba 
+  },
+  { 
+    rol: "Developer", 
+    alias: "Ingeniera de la Caldera: Alimentando el fuego del servidor.",
+    foto: fotoMaria 
+  },
+  { 
+    rol: "Scrum Master", 
+    alias: "Pastor de Almas Condenadas: Mantiene la unidad en mitad del caos sangriento",
+    foto: fotoAdrian 
+  },
 ];
 
 const AboutUs = () => {
-  const [activeIndex, setActiveIndex] = useState(0);
-
-  // Autoplay lento
-  useEffect(() => {
-    const interval = setInterval(() => {
-      setActiveIndex((prev) => (prev + 1) % imagenesCarrusel.length);
-    }, 5000);
-
-    return () => clearInterval(interval);
-  }, []);
-
   return (
-  <section className="relative min-h-screen text-white overflow-hidden">
+    <section className="relative min-h-screen text-white overflow-hidden flex flex-col">
+      
+      {/* 📹 FONDO DE VIDEO */}
+      <div className="absolute inset-0 z-0">
+        <video
+          className="w-full h-full object-cover"
+          autoPlay
+          muted
+          loop
+          playsInline
+        >
+          <source src="public/video/14058980-uhd_4096_2160_30fps (1) (1).mp4" />
+        </video>
+        <div className="absolute inset-0 bg-black/75"></div>
+      </div>
 
-    {/* 🎬 VÍDEO DE FONDO */}
-    <div className="absolute inset-0 z-0">
-      <video
-        className="w-full h-full object-cover"
-        autoPlay
-        muted
-        loop
-        playsInline
-      >
-        <source src="public/video/14058980-uhd_4096_2160_30fps (1) (1).mp4 " />
-      </video>
-      <div className="absolute inset-0 bg-black/60"></div>
-    </div>
-
-    {/* 👥 EQUIPO (PRIMERO) */}
-    <div className="relative z-10 max-w-6xl mx-auto px-4 py-24">
-      <h2 className="text-5xl md:text-6xl font-bold text-center mb-6 font-omen-title uppercase">
+      {/* CONTENEDOR PRINCIPAL */}
+      <div className="relative z-10 max-w-6xl mx-auto px-4 py-16 w-full flex flex-col min-h-screen">
         
-        Nuestro Equipo
-      </h2>
+        {/* TÍTULO: Se mantiene arriba con su margen original */}
+        <h2 className="text-5xl md:text-7xl font-bold text-center mb-20 font-omen-title uppercase text-red-700 drop-shadow-[0_0_20px_rgba(185,28,28,0.8)] tracking-tighter">
+          El Clan de La Sierra
+        </h2>
 
-      <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-8">
-        {equipo.map((miembro, index) => (
-          <div
-            key={index}
-            className="bg-black/70 backdrop-blur-md rounded-lg p-6 flex flex-col items-center text-center hover:scale-105 transition-transform"
-          >
-            <img
-              src={miembro.foto}
-              alt={miembro.nombre}
-              className="w-48 h-64 md:w-56 md:h-80 object-cover rounded-lg mb-6 shadow-2xl transition-transform duration-300 hover:scale-105"
+        {/* CONTENEDOR DE EQUIPO: Este es el que se centra verticalmente en el espacio restante */}
+        <div className="flex-grow flex items-center">
+          <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-12 w-full">
+            {equipo.map((miembro, index) => (
+              <div
+                key={index}
+                className="group flex flex-col items-center text-center transition-all duration-500"
+              >
+                {/* 🖼️ IMAGEN SIN MARCOS */}
+                <img
+                  src={miembro.foto}
+                  alt={miembro.rol}
+                  className="w-48 h-64 md:w-56 md:h-80 object-cover mb-6 transition-all duration-700 grayscale group-hover:grayscale-0 group-hover:scale-110 group-hover:drop-shadow-[0_0_30px_rgba(185,28,28,0.4)]"
+                />
 
+                {/* ROL */}
+                <p className="text-amber-600 font-omen-body text-xs font-black uppercase tracking-[0.2em] mb-2">
+                  {miembro.rol}
+                </p>
 
-            />
-            <h3 className="text-xl font-bold text-red-700 font-omen-title">
-              {miembro.nombre}
-            </h3>
-            <p className="text-gray-300 font-omen-body">{miembro.rol}</p>
+                {/* ALIAS */}
+                <p className="text-gray-400 font-omen-body text-xs italic leading-tight max-w-[180px]">
+                  {miembro.alias}
+                </p>
+              </div>
+            ))}
           </div>
-        ))}
+        </div>
       </div>
-    </div>
-
-    {/* 🧠 TEXTO (SEGUNDO) */}
-    <div className="relative z-10 text-center px-4 py-32 max-w-4xl mx-auto">
-      <h2 className="text-5xl md:text-6xl font-bold mb-6 font-omen-title">
-        Bienvenido al terror que se queda contigo
-      </h2>
-
-      <p className="text-xl md:text-2xl mb-6 font-omen-body">
-        Cada película aquí está seleccionada para inquietar, emocionar y perturbar.
-        Desde clásicos hasta joyas ocultas, nuestro catálogo es un homenaje al cine de terror.
-      </p>
-
-      <p className="text-lg md:text-xl text-gray-300 font-omen-body">
-        Descubre historias de miedo, películas exclusivas y un catálogo en constante actualización.
-      </p>
-    </div>
-
-    {/* 🎞️ CARRUSEL (TERCERO) */}
-    <div className="relative z-10 w-full overflow-hidden py-20">
-      <div
-        className="flex justify-center transition-transform duration-1000 ease-in-out"
-        style={{
-          transform: `translateX(calc(50% - ${activeIndex * 320}px - 160px))`,
-        }}
-      >
-        {imagenesCarrusel.map((img, index) => (
-          <div
-            key={index}
-            className={`mx-6 transition-all duration-500 ${
-              index === activeIndex
-                ? "scale-110 opacity-100"
-                : "scale-90 opacity-60"
-            }`}
-          >
-            <img
-              src={img}
-              alt={`Póster ${index + 1}`}
-              className="w-72 md:w-80 rounded-xl shadow-2xl"
-            />
-          </div>
-        ))}
-      </div>
-    </div>
-
-  </section>
-);
+    </section>
+  );
 };
 
 export default AboutUs;

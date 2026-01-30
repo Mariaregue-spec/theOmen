@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react';
-import { useNavigate, Link } from 'react-router-dom';  // ← Añade Link
+import { useNavigate, Link } from 'react-router-dom';
 import axios from 'axios';
 import '..//index.css';
 
@@ -16,7 +16,6 @@ const Peliculas = () => {
     useEffect(() => {
         const obtenerPeliculas = async () => {
             try {
-                debugger
                 setCargando(true);
                 const respuesta = await axios.get("http://localhost:3000/peliculas");
                 setPeliculas(respuesta.data);
@@ -67,6 +66,9 @@ const Peliculas = () => {
         }
     };
 
+
+    const btnNavStyle = "px-6 py-2 bg-black/60 border-2 border-amber-600/50 text-amber-500 font-black uppercase tracking-widest transition-all duration-500 hover:border-red-600 hover:text-red-500 hover:shadow-[0_0_15px_rgba(185,28,28,0.4)] disabled:opacity-30 disabled:cursor-not-allowed disabled:hover:border-amber-600/50 disabled:hover:text-amber-500 disabled:hover:shadow-none";
+
     return (
         <div
             className="min-h-screen bg-neutral-950 bg-cover bg-center bg-no-repeat py-12 px-4 md:px-6 lg:px-8 relative"
@@ -74,103 +76,94 @@ const Peliculas = () => {
         >
             <div className="absolute inset-0 bg-black/70 -z-10"></div>
             <div className="relative z-10 max-w-7xl mx-auto">
-                <h1 className="text-4xl md:text-5xl font-bold text-center text-red-600 mb-2 tracking-wider uppercase drop-shadow-lg">
+                <h1 className="text-4xl md:text-5xl font-bold text-center text-red-700 mb-2 tracking-widest uppercase drop-shadow-[0_2px_10px_rgba(185,28,28,0.5)] font-omen-title">
                     Sección de películas
                 </h1>
-                <p className="text-center text-gray-400 mb-8">
+                
+                
+                <p className="text-center text-gray-400 mb-8 invisible">
                     Página {paginaActual} de {totalPaginas}
                 </p>
 
-                <div className="flex items-center justify-center gap-4 mb-8">
+                <div className="flex items-center justify-center gap-6 mb-8">
                     <button
                         onClick={irPaginaAnterior}
                         disabled={paginaActual === 1}
-                        className="px-6 py-2 bg-red-600 hover:bg-red-700 disabled:bg-gray-600 disabled:cursor-not-allowed text-white font-bold rounded transition duration-300"
+                        className={btnNavStyle}
                     >
                         ← Anterior
                     </button>
 
-                    <span className="text-gray-300 font-bold">
-                        Página {paginaActual} de {totalPaginas}
+                    <span className="text-red-600 font-omen-title font-bold tracking-widest">
+                        {paginaActual} / {totalPaginas}
                     </span>
 
                     <button
                         onClick={irPaginaSiguiente}
                         disabled={paginaActual === totalPaginas}
-                        className="px-6 py-2 bg-red-600 hover:bg-red-700 disabled:bg-gray-600 disabled:cursor-not-allowed text-white font-bold rounded transition duration-300"
+                        className={btnNavStyle}
                     >
                         Siguiente →
                     </button>
                 </div>
 
-                <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 xl:grid-cols-5 gap-6 mb-12">
-                    {peliculasActuales.map((pelicula) => (
-                        <Link
-                            key={pelicula.id}
-                            to={`/movies/${pelicula.id}`}  // ← Navega al detalle
-                            className="group bg-neutral-900 border border-red-900/30 rounded-lg overflow-hidden shadow-lg hover:shadow-2xl hover:shadow-red-950/50 transition duration-300 transform hover:scale-105 flex flex-col h-full"
-                        >
-                            {/* Poster */}
-                            <div className="relative overflow-hidden h-64 sm:h-72 bg-neutral-800 flex items-center justify-center flex-shrink-0">
-                                <img
-                                    src={imagenesError.has(pelicula.id) ? '/posters/placeholder.jpg' : pelicula.poster}
-                                    alt={pelicula.titulo}
-                                    className="w-full h-full object-contain group-hover:brightness-75 transition duration-300"
-                                    onError={() => {
-                                        setImagenesError(prev => new Set([...prev, pelicula.id]));
-                                    }}
-                                />
-                                {imagenesError.has(pelicula.id) && (
-                                    <div className="absolute inset-0 bg-gradient-to-b from-transparent to-black/60 flex items-center justify-center">
-                                        <span className="text-red-500 font-bold text-sm text-center px-2">Sin imagen</span>
-                                    </div>
-                                )}
-                            </div>
+<div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 xl:grid-cols-5 gap-6 mb-12">
+    {peliculasActuales.map((pelicula) => (
+        <Link
+            key={pelicula.id}
+            to={`/movies/${pelicula.id}`}
+            className="group bg-black/40 backdrop-blur-md border border-white/10 rounded-lg overflow-hidden shadow-lg hover:border-red-700/50 transition duration-300 transform hover:scale-105 flex flex-col h-full"
+        >
+            <div className="relative overflow-hidden h-64 sm:h-72 bg-neutral-900 flex items-center justify-center flex-shrink-0">
+                <img
+                    src={imagenesError.has(pelicula.id) ? '/posters/placeholder.jpg' : pelicula.poster}
+                    alt={pelicula.titulo}
+                    className="w-full h-full object-contain transition duration-500 group-hover:scale-110"
+                    onError={() => {
+                        setImagenesError(prev => new Set([...prev, pelicula.id]));
+                    }}
+                />
+            </div>
 
-                            {/* Info */}
-                            <div className="p-4 flex flex-col flex-grow justify-between">
-                                <h3 className="text-gray-100 font-bold text-sm mb-2 line-clamp-2 group-hover:text-red-500 transition">
-                                    {pelicula.titulo}
-                                </h3>
+            <div className="p-4 flex flex-col flex-grow justify-between">
+                <h3 className="text-red-600 font-bold text-xs mb-2 line-clamp-2 uppercase tracking-wide">
+                    {pelicula.titulo}
+                </h3>
 
-                                <div className="flex items-center justify-between mb-3">
-                                    <span className="text-gray-400 text-sm">
-                                        {pelicula.anio}
-                                    </span>
-                                    <div className="flex items-center gap-1">
-                                        <span className="text-yellow-500 text-lg">⭐</span>
-                                        <span className="text-gray-300 font-bold text-sm">
-                                            {pelicula.rating.toFixed(1)}
-                                        </span>
-                                    </div>
-                                </div>
-
-                                {/* Botón ya no necesita onClick, el Link lo cubre todo */}
-                                <span className="w-full bg-red-600 group-hover:bg-red-700 text-white font-bold py-2 px-4 rounded transition duration-300 text-sm text-center block">
-                                    Más info
-                                </span>
-                            </div>
-                        </Link>
-                    ))}
+                <div className="flex items-center justify-between mb-4">
+                    <span className="text-gray-500 text-[10px] italic">
+                        {pelicula.anio}
+                    </span>
+                    <div className="flex items-center gap-1">
+                        <span className="text-yellow-600 text-sm">⭐</span>
+                        <span className="text-gray-300 font-bold text-xs">
+                            {pelicula.rating.toFixed(1)}
+                        </span>
+                    </div>
                 </div>
 
-                <div className="flex items-center justify-center gap-4 mb-8">
+
+                <span className="w-full px-2 py-1.5 border border-red-900/50 bg-red-950/20 hover:bg-red-700 hover:text-white hover:shadow-[0_0_10px_rgba(185,28,28,0.8)] text-red-700 font-bold text-[10px] uppercase rounded transition-all duration-300 text-center">
+    Más info
+</span>
+            </div>
+        </Link>
+    ))}
+</div>
+
+                <div className="flex items-center justify-center gap-6 mt-12">
                     <button
                         onClick={irPaginaAnterior}
                         disabled={paginaActual === 1}
-                        className="px-6 py-2 bg-red-600 hover:bg-red-700 disabled:bg-gray-600 disabled:cursor-not-allowed text-white font-bold rounded transition duration-300"
+                        className={btnNavStyle}
                     >
                         ← Anterior
                     </button>
 
-                    <span className="text-gray-300 font-bold">
-                        Página {paginaActual} de {totalPaginas}
-                    </span>
-
                     <button
                         onClick={irPaginaSiguiente}
                         disabled={paginaActual === totalPaginas}
-                        className="px-6 py-2 bg-red-600 hover:bg-red-700 disabled:bg-gray-600 disabled:cursor-not-allowed text-white font-bold rounded transition duration-300"
+                        className={btnNavStyle}
                     >
                         Siguiente →
                     </button>
