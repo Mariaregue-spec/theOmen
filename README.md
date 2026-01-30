@@ -4,6 +4,20 @@
 
 ---
 
+## 📸 Capturas
+
+A continuación, algunas capturas representativas del proyecto:
+
+<div align="center">
+
+![theOmer — Home](img/theOmer.png)
+
+![Nuestro equipo](/img/theOmerNosotros.png)
+
+</div>
+
+---
+
 ## 🎯 Qué incluye
 
 - SPA con **React.js** y **React Router DOM**
@@ -252,30 +266,6 @@ npm run dev
 - License: MIT (see `LICENSE`)
 - Contributions: Open an issue or PR describing changes/bugs.
 - Note: This project was completed and corrected with the assistance of AI (assistant). The AI assisted with writing and fixing code and documentation.
-
----
-
-## 📸 Vista previa
-
-![Hero](/docs/images/hero-desktop.jpg)
-
-### Nuestro Equipo
-
-![Xabier](/docs/images/xabier.png) ![Alba](/docs/images/alba.png) ![Maria](/docs/images/maria.png) ![Adrian](/docs/images/adrian.png)
-
-> *Captura del hero y del equipo desde la sección "Sobre nosotros".*
-
----
-
-## 📸 Preview
-
-![Hero](/docs/images/hero-desktop.jpg)
-
-### Our Team
-
-![Xabier](/docs/images/xabier.png) ![Alba](/docs/images/alba.png) ![Maria](/docs/images/maria.png) ![Adrian](/docs/images/adrian.png)
-
-> *Screenshot of the hero and the team section.*
 
 ---
 
