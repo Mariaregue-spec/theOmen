@@ -10,7 +10,7 @@ export default function Footer() {
             aria-label="Footer THE OMEN"
             className="mt-12 border-t border-[#b30000]/30 bg-[#050505]"
         >
- 
+            {/* Línea glow superior */}
             <div className="h-0.5 w-full bg-linear-to-r from-transparent via-[#ff1a1a]/60 to-transparent" />
             <div className="mx-auto max-w-6xl px-5 py-12 sm:px-6 lg:px-8">
                 <div className="grid gap-12 md:grid-cols-3">
@@ -151,4 +151,4 @@ export default function Footer() {
             </div>
         </footer>
     );
-}
+} 
