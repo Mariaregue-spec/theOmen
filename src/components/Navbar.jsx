@@ -18,13 +18,16 @@ export default function Navbar() {
 
     return (
         <>
-            {/* HERO */}
+            
             <div className="relative w-full flex items-center justify-center bg-black">
+                <Link to="/" className="relative z-20">
                 <img
                     src="public/logo-primary.png"
                     alt="Hero"
+                    
                     className="h-auto max-h-[60px] sm:max-h-[80px] md:max-h-[100px] lg:max-h-[120px] object-contain block"
                 />
+                </Link>
                 <div className="absolute inset-0 bg-black/30 pointer-events-none" />
             </div>
 
@@ -33,13 +36,13 @@ export default function Navbar() {
 
 
 
-            {/* NAVBAR */}
+            
             <header className="w-full bg-black/80 backdrop-blur-md border-t border-white/10">
 
                 <nav className="w-full bg-black">
                     <div className="font-omen-body relative mx-auto max-w-7xl px-8 py-4 flex items-center justify-between text-sm uppercase tracking-widest text-gray-200">
 
-                        {/* Izquierda */}
+                        
                         <div className="hidden md:flex gap-8">
                             <ul className="list-none flex gap-8">
                                 <li className="hover:text-red-700 transition">
@@ -60,7 +63,6 @@ export default function Navbar() {
                             </ul>
                         </div>
 
-                        {/* Derecha */}
                         <div className="hidden md:flex gap-8">
                             <ul className="list-none flex gap-8">
                                 <li className="hover:text-red-700 transition">
@@ -76,7 +78,7 @@ export default function Navbar() {
                             </ul>
                         </div>
 
-                        {/* Botón móvil */}
+
                         <button
                             onClick={() => setOpen(!open)}
                             className="absolute right-8 md:hidden hover:text-red-700 transition"
@@ -86,7 +88,7 @@ export default function Navbar() {
                     </div>
                 </nav>
 
-                {/* Menú móvil */}
+
                 {open && (
                     <div className="font-omen-body w-full bg-black/80 backdrop-blur-md p-6 text-center md:hidden z-20">
                         {[...leftLinks, ...rightLinks].map((item) => (
