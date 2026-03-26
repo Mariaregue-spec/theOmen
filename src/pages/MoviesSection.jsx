@@ -17,8 +17,9 @@ const Peliculas = () => {
         const obtenerPeliculas = async () => {
             try {
                 setCargando(true);
-                const respuesta = await axios.get("http://localhost:3000/peliculas");
+                const respuesta = await axios.get("http://localhost:8080/movies");
                 setPeliculas(respuesta.data);
+                console.log(peliculas);
                 setError(null);
             } catch (err) {
                 setError('Error al cargar las películas. Asegúrate de que el servidor esté corriendo.');

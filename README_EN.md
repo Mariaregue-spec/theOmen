@@ -93,7 +93,7 @@ npm install
 
 ```bash
 npm run api
-# → listening at http://localhost:3000
+# → listening at http://localhost:8080
 ```
 
 3. Run the app in another terminal:

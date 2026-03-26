@@ -132,7 +132,7 @@ npm run dev
 
 ## 🧪 Nota sobre el entorno
 
-- Asegúrate de que la API (`npm run api`) esté corriendo antes de abrir la app; la UI espera `http://localhost:3000/peliculas`.
+- Asegúrate de que la API (`npm run api`) esté corriendo antes de abrir la app; la UI espera `http://localhost:8080/movies`.
 - Si quieres ejecutar API y app en una sola terminal considera instalar `concurrently` y añadir un script, pero actualmente se ejecutan en terminales separadas.
 
 ---
