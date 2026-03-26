@@ -99,7 +99,7 @@ npm install
 
 ```bash
 npm run api
-# → escucha en http://localhost:3000
+# → escucha en http://localhost:8080
 ```
 
 3. En otra terminal ejecuta la aplicación (Vite):
